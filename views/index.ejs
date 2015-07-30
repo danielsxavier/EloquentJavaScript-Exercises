@@ -1,27 +1,39 @@
 <!DOCTYPE html>
 <html>
 
-<head>
-    <title>Eloquent JS</title>
-</head>
+<!-- Site head -->
+<% include head.ejs %>
 
 <body>
-    <h1>Exercises from book Eloquent JavaScript</h1>
-    <ul>
-        <li>
-            <p>Chapter 2</p>
-            <ul>
-                <li><p><a href="/output?algorithm=chapter02e01">Exercise 1: Chess v1</a></p></li>
-                <li><p><a href="#">Exercise 1: Chess v2</a></p></li>
-                <li><p><a href="#">Exercise 2: FizzBuzz</a></p></li>
-            </ul>
-        </li>
-        <li>
-            <p>Chapter 3</p>
-            <ul>
-                <li><p><a href="#"></a></p></li>
-            </ul>
-        </li>
-    </ul>
+    <main>
+        <h1>Exercises from book Eloquent JavaScript</h1>
+        <ul>
+            <li>
+                <p>Chapter 2</p>
+                <ul>
+                    <li><p><a href="/output?chapter=02&exercise=02">Exercise 2: FizzBuzz</a> <a href="/modal?chapter=02&exercise=02">(Source Code)</a></p></li>
+                    <li><p><a href="/output?chapter=02&exercise=03">Exercise 3: Chess Board</a> <a href="#">(Source Code)</a></p></li>
+                </ul>
+            </li>
+            <li>
+                <p>Chapter 3</p>
+                    <ul>
+                        <li><p><a href="#"></a></p></li>
+                    </ul>
+            </li>
+        </ul>
+          <!-- Modal Structure -->
+          <% if (typeof sourcecode != 'undefined') { %>
+          <div id="modal1" class="modal">
+            <div class="modal-content">
+                    <%= sourcecode %>
+            </div>
+            <div class="modal-footer">
+              <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+            </div>
+          </div>
+          <script>$('#modal1').openModal();</script>
+          <% } %>
+    </main>
 </body>
 </html>

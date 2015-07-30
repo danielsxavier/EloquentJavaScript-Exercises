@@ -7,11 +7,17 @@ router.get('/', function (req, res, next) {
 });
 
 router.get('/output', function (req, res, next) {
-    //algorithm = req.query.algorithm;
-    var lol = require('../public/exercises/chapter02/Chess');
-    res.send(lol.algorithm());
-    
-//testing VsCode
+    var chapter = req.query.chapter;
+    var exercise = req.query.exercise;
+    var file = require('../public/exercises/chapter' + chapter + '/' + exercise);
+    res.send(file.algorithm()); 
+});
+
+router.get('/modal', function(req, res, next) {
+    var chapter = req.query.chapter;
+    var exercise = req.query.exercise;
+    var file = require('../public/exercises/chapter' + chapter + '/' + exercise);
+    res.render('index', {sourcecode: file.code()});
 });
 
 module.exports = router;
