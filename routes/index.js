@@ -10,6 +10,8 @@ router.get('/output', function (req, res, next) {
     //algorithm = req.query.algorithm;
     var lol = require('../public/exercises/chapter02/Chess');
     res.send(lol.algorithm());
+    
+//testing VsCode
 });
 
 module.exports = router;
