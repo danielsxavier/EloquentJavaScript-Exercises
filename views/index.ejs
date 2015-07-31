@@ -11,8 +11,8 @@
             <li>
                 <p>Chapter 2</p>
                 <ul>
-                    <li><p><a href="/output?chapter=02&exercise=02">Exercise 2: FizzBuzz</a> <a href="/modal?chapter=02&exercise=02">(Source Code)</a></p></li>
-                    <li><p><a href="/output?chapter=02&exercise=03">Exercise 3: Chess Board</a> <a href="#">(Source Code)</a></p></li>
+                    <li><p><a href="/output?chapter=2&exercise=2">Exercise 2: FizzBuzz</a> <button type="button" onclick="loadAndOpenSrc(2, 2)">(Source Code)</button></p></li>
+                    <li><p><a href="/output?chapter=2&exercise=3">Exercise 3: Chess Board</a> <button type="button" onclick="loadAndOpenSrc(2, 3)">(Source Code)</button></p></li>
                 </ul>
             </li>
             <li>
@@ -22,18 +22,21 @@
                     </ul>
             </li>
         </ul>
+        <script>
+            function loadAndOpenSrc(chapter, exercise) {
+                var req = "/modal?chapter=" + chapter + "&exercise=" + exercise;
+                $.get(req, function (code){
+                    $('#textarea1').text(code.sourcecode);
+                    $('#modal1').openModal();
+                });
+            }
+        </script>
           <!-- Modal Structure -->
-          <% if (typeof sourcecode != 'undefined') { %>
           <div id="modal1" class="modal">
-            <div class="modal-content">
-                    <%= sourcecode %>
-            </div>
-            <div class="modal-footer">
-              <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
-            </div>
+              <div class="modal-content">
+                  <textarea id="textarea1" class="materialize-textarea" readonly></textarea>
+                </div>
           </div>
-          <script>$('#modal1').openModal();</script>
-          <% } %>
     </main>
 </body>
 </html>
